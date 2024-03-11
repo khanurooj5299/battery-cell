@@ -10,6 +10,3 @@ def signup(request):
     else:
         form = SignupForm()
     return render(request, "authentication/signup.html", {"form":form})
-
-def login(request):
-    return render(request, 'authentication/login.html')
