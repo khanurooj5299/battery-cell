@@ -1,28 +1,17 @@
-{% extends "base.html" %} {% block title %}Signup{% endblock title %} 
+{% extends "base.html" %} {% block title %}Signup{% endblock title %}
+{% load crispy_forms_tags %} 
 {% block content %}
 <div class="container">
-  <div class="card mt-3">
+  <div class="card my-3">
     <div class="card-body">
       <h5 class="card-title">Signup</h5>
       <hr>
       <div class="card-text">
-        <form action="#" method="POST" id="signupForm">
-          <div class="mb-3">
-            <label for="email" class="form-label">Email address</label>
-            <input
-              type="email"
-              class="form-control"
-              id="email"
-            />
-          </div>
-          <div class="mb-3">
-            <label for="password" class="form-label">Password</label>
-            <input
-              type="password"
-              class="form-control"
-              id="password"
-            />
-          </div>
+        <form method="POST" id="signupForm">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          {{form | crispy}}
+        </fieldset>
         </form>
       </div>
       <button class="card-link btn btn-primary" type="submit" form="signupForm">Signup</button>
