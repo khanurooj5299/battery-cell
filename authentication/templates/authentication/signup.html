@@ -1,1 +1,35 @@
-i am signup
+{% extends "base.html" %} {% block title %}Signup{% endblock title %} 
+{% block content %}
+<div class="container">
+  <div class="card mt-3">
+    <div class="card-body">
+      <h5 class="card-title">Signup</h5>
+      <hr>
+      <div class="card-text">
+        <form action="#" method="POST" id="signupForm">
+          <div class="mb-3">
+            <label for="email" class="form-label">Email address</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input
+              type="password"
+              class="form-control"
+              id="password"
+            />
+          </div>
+        </form>
+      </div>
+      <button class="card-link btn btn-primary" type="submit" form="signupForm">Signup</button>
+      <a href="auth/login.html" class="card-link link-offset-2 link-secondary"
+        >Already have an account</a
+      >
+    </div>
+  </div>
+</div>
+{% endblock content %}
