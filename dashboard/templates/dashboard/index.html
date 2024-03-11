@@ -2,4 +2,9 @@
 {% block title %}Dashboard{% endblock title %}
 {% block content %}
     {% include "dashboard/header_component.html" %}
+    <div class="container">
+        <a href="{% url "add_cell" %}" class='btn btn-primary my-2'>Add Cell</a>
+
+        {% comment %} LIST OF CELLS {% endcomment %}
+    </div>
 {% endblock content %}
