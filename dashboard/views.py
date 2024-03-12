@@ -17,6 +17,9 @@ class CellCreateView(CreateView):
     
     # overriding to insert the user_id field for a cell
     def form_valid(self, form):
+        # image_data_url key is added to the form through JS on frontend
+        form.instance.image_data_url = self.request.POST['image_data_url']
+        # adding user_id
         form.instance.created_by = self.request.user
         return super().form_valid(form)
     

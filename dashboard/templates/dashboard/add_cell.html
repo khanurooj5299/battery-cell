@@ -1,5 +1,14 @@
 {% extends "base.html" %}
+{% load crispy_forms_tags %} 
+{% load static %}
 {% block title %}Add Cell{% endblock title %}
+{% block css %}
+ {{ block.super }}
+ <link rel="stylesheet" href="{% static "dashboard/css/styles.css" %}">
+{% endblock css %}
+{% block js %}
+  <script type="module" src="{% static "dashboard/js/add_cell.js" %}"></script>
+{% endblock js %}
 {% block content %}
     {% include "dashboard/header_component.html" %}
     <form method="POST" id="cellCreateForm">
