@@ -1,10 +1,11 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class BatteryCell(models.Model):
     # image is stored as a base64 encoded data url
     image_data_url = models.TextField()
     cell_id = models.CharField(max_length=10, blank=True)
-    
+    created_by = models.ForeignKey(User, on_delete=models.CASCADE)
     
     # META INFORMATION
     cell_condition = models.CharField(max_length=8, choices={'New':'New', 'Recycled': 'Recycled'}, default='Recycled')
