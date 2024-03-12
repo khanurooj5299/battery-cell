@@ -1,0 +1,33 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block title %}Cell Details{% endblock title %} 
+{% block css %}
+ {{ block.super }}
+ <link rel="stylesheet" href="{% static "dashboard/css/cell_detail.css" %}">
+{% endblock css %}
+{% block content %}
+{% include "dashboard/header_component.html" %}
+<div class="container">
+  <div class="row gap-2 justify-content-center">
+    {% comment %} ID AND IMAGE{% endcomment %}
+    <div class="col-12 col-sm-5 card">
+      <img
+        src="{{cell.image_data_url}}"
+        class="card-img-top"
+        alt="cell image"
+      />
+      <div class="card-body">
+        <h5 class="card-title">Cell-Id:</h5>
+        <p class="card-text">
+          {{cell.cell_id}}
+        </p>
+        <div>
+            <img src="{{cell.barcode}}" alt="barcode">
+        </div>
+      </div>
+    </div>
+    {% comment %} HEALTH ICON {% endcomment %}
+    <div class="col-12 col-sm-5 card">hello</div>
+  </div>
+</div>
+{% endblock content %}
