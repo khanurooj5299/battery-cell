@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.views.generic.edit import CreateView 
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 from .forms import CellCreateForm
 from .models import BatteryCell
 
@@ -17,9 +18,12 @@ class DashboardView(ListView):
         return queryset
 
 #view for info of a particular cell
-def cell_info(request, cell_id):
-    return render(request, 'dashboard/cell_info.html')
+class CellDetailView(DetailView):
+    model = BatteryCell
+    template_name = 'dashboard/cell_detail.html'
+    context_object_name = 'cell'
 
+#view for creating a cell
 class CellCreateView(CreateView):
     form_class = CellCreateForm
     template_name = "dashboard/add_cell.html"
