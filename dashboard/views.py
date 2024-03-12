@@ -1,4 +1,6 @@
 from django.shortcuts import render
+from django.views.generic.edit import CreateView
+from dashboard.models import BatteryCell
 
 #view for main dashboard of a user
 def index(request):
@@ -8,5 +10,7 @@ def index(request):
 def cell_info(request, cell_id):
     return render(request, 'dashboard/cell_info.html')
 
-def add_cell(request):
-    return render(request, 'dashboard/add_cell.html')
+class CellCreateView(CreateView):
+    model = BatteryCell
+    context_object_name = "cell"
+    

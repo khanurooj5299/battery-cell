@@ -5,6 +5,7 @@ class BatteryCell(models.Model):
     image_data_url = models.TextField()
     cell_id = models.CharField(max_length=10, blank=True)
     
+    
     # META INFORMATION
     cell_condition = models.CharField(max_length=8, choices={'New':'New', 'Recycled': 'Recycled'}, default='Recycled')
     manufacturer = models.CharField(max_length=20, default='Molicel')
