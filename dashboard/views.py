@@ -8,7 +8,13 @@ from .models import BatteryCell
 class DashboardView(ListView):
     model = BatteryCell
     template_name = 'dashboard/dashboard.html'
-    context_object_name = 'cell'
+    context_object_name = 'cell_list'
+    
+    # show only those items which were added by the logged in user
+    def get_queryset(self):
+        authenticated_user = self.request.user
+        queryset = BatteryCell.objects.filter(created_by=authenticated_user)
+        return queryset
 
 #view for info of a particular cell
 def cell_info(request, cell_id):
@@ -25,5 +31,6 @@ class CellCreateView(CreateView):
         form.instance.image_data_url = self.request.POST['image_data_url']
         # adding user_id
         form.instance.created_by = self.request.user
+        print(self.request.user)
         return super().form_valid(form)
     

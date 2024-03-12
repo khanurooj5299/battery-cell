@@ -1,4 +1,26 @@
-.card {
+.card,.dashboard.container {
     max-width: 800px;
     margin: auto;
+}
+
+.dashboard .cell-thumbnail {
+    img {
+        height: 100%;
+        width: 100%;
+        object-fit: contain;
+    }
+}
+
+.dashboard .list-group-item>div {
+    flex: 1;
+}
+
+.dashboard li {
+    height: 25vmax;
+    max-height: 150px;
+}
+@media(width >= 576px) {
+    .dashboard li {
+        max-height: 100px;
+    }
 }
