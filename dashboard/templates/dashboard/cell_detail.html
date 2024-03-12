@@ -7,10 +7,10 @@
 {% endblock css %}
 {% block content %}
 {% include "dashboard/header_component.html" %}
-<div class="container">
+<div class="container p-3">
   <div class="row gap-2 justify-content-center">
     {% comment %} ID AND IMAGE{% endcomment %}
-    <div class="col-12 col-sm-5 card">
+    <div class="col-12 col-sm-5 card id-image">
       <img
         src="{{cell.image_data_url}}"
         class="card-img-top"
@@ -27,7 +27,7 @@
       </div>
     </div>
     {% comment %} HEALTH ICON {% endcomment %}
-    <div class="col-12 col-sm-5 card">hello</div>
+    <div class="col-12 col-sm-5 card health-icon">hello</div>
   </div>
 </div>
 {% endblock content %}
