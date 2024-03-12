@@ -11,10 +11,22 @@
 {% endblock js %}
 {% block content %}
     {% include "dashboard/header_component.html" %}
-    <form method="POST" id="cellCreateForm">
-        {% csrf_token %}
-        <fieldset class="form-group">
-          {{form | crispy}}
-        </fieldset>
-    </form>
+    <div class="container mt-2 mb-2">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Add New Cell</h5>
+          <hr>
+          <div class="card-text">
+            <form method="POST" id="cellCreateForm">
+              {% csrf_token %}
+              <fieldset class="form-group">
+                {{form | crispy}}
+              </fieldset>
+            </form>
+          </div>
+          <button class="card-link btn btn-primary" type="submit" form="cellCreationForm">Add</button>
+          <a href="{% url "dashboard" %}" class="card-link btn btn-primary">Cancel</a>
+        </div>
+      </div>
+    </div>
 {% endblock content %}
