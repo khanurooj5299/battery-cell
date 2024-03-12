@@ -13,7 +13,7 @@ def cell_info(request, cell_id):
 class CellCreateView(CreateView):
     form_class = CellCreateForm
     template_name = "dashboard/add_cell.html"
-    success_url = "dashboard"
+    success_url = "/dashboard"
     
     # overriding to insert the user_id field for a cell
     def form_valid(self, form):

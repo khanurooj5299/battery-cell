@@ -17,9 +17,16 @@
           <h5 class="card-title">Add New Cell</h5>
           <hr>
           <div class="card-text">
-            <form method="POST" id="cellCreateForm">
+            <form method="POST" id="cellCreationForm">
               {% csrf_token %}
               <fieldset class="form-group">
+                {% comment %} Control for uploading image {% endcomment %}
+                <div class="mb-3">
+                  <label class="form-label">Cell Image</label>
+                  <input type="file" class="form-control" accept=".png, .jpg, .jpeg" id="cellImage" required>
+                </div>
+                {% comment %} Hidden control to send the image_data_url to the server {% endcomment %}
+                <input type="hidden" name="image_data_url" id="image_data_url">
                 {{form | crispy}}
               </fieldset>
             </form>

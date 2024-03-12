@@ -14,13 +14,13 @@ class BatteryCell(models.Model):
     type = models.CharField(max_length=20, default='Li-ion')
     form_factor = models.CharField(max_length=20, default='Cylindrical 21700')
     mass = models.DecimalField(max_digits=10, decimal_places=2, default=70)
-    mass_unit = models.CharField(max_length=1, choices={'g': 'Grams'})
+    mass_unit = models.CharField(max_length=1, choices={'g': 'Grams'}, default='g')
     height = models.DecimalField(max_digits=10, decimal_places=2, default=70.15)
-    height_unit = models.CharField(max_length=2, choices={'mm': 'Millimeters'})
+    height_unit = models.CharField(max_length=2, choices={'mm': 'Millimeters'}, default='mm')
     diameter = models.DecimalField(max_digits=10, decimal_places=2, default=21.55)
-    diameter_unit = models.CharField(max_length=2, choices={'mm': 'Millimeters'})
+    diameter_unit = models.CharField(max_length=2, choices={'mm': 'Millimeters'}, default='mm')
     volume = models.DecimalField(max_digits=10, decimal_places=2, default=25.59)
-    volume = models.CharField(max_length=3, choices={'cm3': 'Cubic centimeter'})
+    volume = models.CharField(max_length=3, choices={'cm3': 'Cubic centimeter'}, default='mm')
     
     # ELECTRICAL PARAMETERS
     nominal_voltage = models.DecimalField(max_digits=10, decimal_places=2, default=3.6)
