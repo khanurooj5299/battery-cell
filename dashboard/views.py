@@ -1,10 +1,14 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView 
+from django.views.generic.list import ListView
 from .forms import CellCreateForm
+from .models import BatteryCell
 
 #view for main dashboard of a user
-def index(request):
-    return render(request, 'dashboard/index.html')
+class DashboardView(ListView):
+    model = BatteryCell
+    template_name = 'dashboard/dashboard.html'
+    context_object_name = 'cell'
 
 #view for info of a particular cell
 def cell_info(request, cell_id):
