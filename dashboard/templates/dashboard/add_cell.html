@@ -10,7 +10,7 @@
   <script type="module" src="{% static "dashboard/js/add_cell.js" %}"></script>
 {% endblock js %}
 {% block content %}
-    {% include "dashboard/header_component.html" %}
+    {% include "dashboard/header_component.html" with extraButtonMarkup='<a href="/dashboard" class="btn btn-primary me-2">Dashboard</a>'%}
     <div class="container mt-2 mb-2">
       <div class="card">
         <div class="card-body">

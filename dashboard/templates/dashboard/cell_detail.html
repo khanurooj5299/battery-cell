@@ -6,7 +6,7 @@
  <link rel="stylesheet" href="{% static "dashboard/css/cell_detail.css" %}">
 {% endblock css %}
 {% block content %}
-{% include "dashboard/header_component.html" %}
+{% include "dashboard/header_component.html" with extraButtonMarkup='<a href="/dashboard" class="btn btn-primary me-2">Dashboard</a>'%}
 <div class="container p-3">
   <div class="row gap-2 justify-content-center">
     {% comment %} ID AND IMAGE{% endcomment %}
