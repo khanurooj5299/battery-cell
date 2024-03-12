@@ -2,6 +2,10 @@
 {% block title %}Add Cell{% endblock title %}
 {% block content %}
     {% include "dashboard/header_component.html" %}
-    <div class="container">
-    </div>
+    <form method="POST" id="cellCreateForm">
+        {% csrf_token %}
+        <fieldset class="form-group">
+          {{form | crispy}}
+        </fieldset>
+    </form>
 {% endblock content %}

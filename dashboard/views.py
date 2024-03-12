@@ -12,7 +12,6 @@ def cell_info(request, cell_id):
 
 class CellCreateView(CreateView):
     form_class = CellCreateForm
-    context_object_name = "cell"
     template_name = "dashboard/add_cell.html"
     success_url = "dashboard"
     
