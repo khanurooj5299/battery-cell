@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.http import HttpResponseNotAllowed
 from django.views.generic.edit import CreateView 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -27,9 +28,9 @@ class CellDetailView(DetailView):
     template_name = 'dashboard/cell_detail.html'
     context_object_name = 'cell'
 
-    # override this method to include barcode for the cell in context
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        #setting the barcode in context
         bytes = BytesIO()
         Code128(context['cell'].cell_id, writer=ImageWriter()).write(bytes)
         binary_data = bytes.getvalue()
@@ -52,3 +53,10 @@ class CellCreateView(CreateView):
         print(self.request.user)
         return super().form_valid(form)
     
+# endpoint for getting the cell visualization template that will be embedded on the cell-detail page through JS 
+def cellVisualization(request):
+    # expecting impedance data as csv file for creating the visualization template
+    if(request.method != "POST"):
+        return HttpResponseNotAllowed(['POST'])
+    else:
+        return render(request, "dashboard/cell_visualization_component.html")
