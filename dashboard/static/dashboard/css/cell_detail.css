@@ -18,3 +18,7 @@
     max-width: 100%;
   }
 }
+
+.field-value {
+  text-align: end;
+}

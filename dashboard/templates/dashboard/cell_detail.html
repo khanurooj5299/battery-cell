@@ -32,7 +32,7 @@
     {% comment %} HEALTH ICON {% endcomment %}
     <div class="col-12 col-sm-5 card health-icon">hello</div>
   </div>
-  {% comment %} CELL INFORMATION {% endcomment %}
+  {% comment %} META AND ELECTRICAL INFORMATION {% endcomment %}
   <div class="row mb-3 gap-2 justify-content-center">
     {% comment %} META INFORMATION {% endcomment %}
     <div class="col-12 col-sm-5 card">
@@ -43,5 +43,6 @@
       {% include "dashboard/electrical_parameters_component.html" with cell=cell%}
     </div>
   </div>
+  
 </div>
 {% endblock content %}
