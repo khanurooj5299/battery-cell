@@ -9,6 +9,7 @@ import base64
 from barcode.writer import ImageWriter
 from .forms import CellCreateForm
 from .models import BatteryCell
+from .visualization import getContext
 
 #view for main dashboard of a user
 class DashboardView(ListView):
@@ -59,4 +60,6 @@ def cellVisualization(request):
     if(request.method != "POST"):
         return HttpResponseNotAllowed(['POST'])
     else:
-        return render(request, "dashboard/cell_visualization_component.html")
+        datasetFile = request.FILES['dataset']
+        context = getContext(datasetFile)
+        return render(request, "dashboard/cell_visualization_component.html", context)
