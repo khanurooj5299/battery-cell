@@ -19,7 +19,7 @@
     height: 25vmax;
     max-height: 150px;
 }
-@media(width >= 576px) {
+@media(min-width: 576px) {
     .dashboard li {
         max-height: 100px;
     }

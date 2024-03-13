@@ -20,7 +20,7 @@ class BatteryCell(models.Model):
     diameter = models.DecimalField(max_digits=10, decimal_places=2, default=21.55)
     diameter_unit = models.CharField(max_length=2, choices={'mm': 'Millimeters'}, default='mm')
     volume = models.DecimalField(max_digits=10, decimal_places=2, default=25.59)
-    volume = models.CharField(max_length=3, choices={'cm3': 'Cubic centimeter'}, default='mm')
+    volume_unit = models.CharField(max_length=3, choices={'cm3': 'Cubic centimeter'}, default='cm3')
     
     # ELECTRICAL PARAMETERS
     nominal_voltage = models.DecimalField(max_digits=10, decimal_places=2, default=3.6)

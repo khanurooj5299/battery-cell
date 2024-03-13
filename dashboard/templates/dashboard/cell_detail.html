@@ -11,7 +11,7 @@
 {% include "dashboard/header_component.html" with extraButtonMarkup='<a href="/dashboard" class="btn btn-primary me-2">Dashboard</a>'%}
 <div class="container p-3">
   {% comment %} ID and HEALTH {% endcomment %}
-  <div class="row gap-2 justify-content-center">
+  <div class="row mb-3 gap-2 justify-content-center">
     {% comment %} ID AND IMAGE{% endcomment %}
     <div class="col-12 col-sm-5 card id-image">
       <img
@@ -33,13 +33,13 @@
     <div class="col-12 col-sm-5 card health-icon">hello</div>
   </div>
   {% comment %} CELL INFORMATION {% endcomment %}
-  <div class="row gap-2">
+  <div class="row mb-3 gap-2 justify-content-center">
     {% comment %} META INFORMATION {% endcomment %}
-    <div class="col-12 col-sm-5">
+    <div class="col-12 col-sm-5 card">
       {% include "dashboard/meta_info_component.html" with cell=cell%}
     </div>
     {% comment %} ELECTRICAL PARAMETERS {% endcomment %}
-    <div class="col-12 col-sm-5">
+    <div class="col-12 col-sm-5 card">
       {% include "dashboard/electrical_parameters_component.html" with cell=cell%}
     </div>
   </div>
