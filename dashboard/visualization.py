@@ -20,7 +20,9 @@ def getContext(datasetFile):
     # FIT THE IMPEDANCE DATA TO MODEL
     circuit.fit(frequencies, Z)
 
-    # log_frequencies = np.log10(frequencies)
-    # log_impedance_values = np.log10(Z)
-    # magnitude_trace = go.Scatter(x=log_frequencies, y=log_impedance_values, mode='lines', name='Magnitude (dB)')
+    context['parameters'] = circuit.parameters_
+    #assume max Rb to be 0.2 ohms
+    R_b_max = 0.2
+    context['health_percentage'] = (circuit.parameters_[0]/R_b_max)*100
+    context['degraded_percentage'] = 100 - context['health_percentage']
     return context

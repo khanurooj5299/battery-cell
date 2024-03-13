@@ -13,17 +13,6 @@
 {% block content %} 
 {% include "dashboard/header_component.html" with extraButtonMarkup='<a href="/dashboard" class="btn btn-primary me-2">Dashboard</a>'%}
 <div class="container p-3">
-  {% comment %} FOR UPLOADING IMPEDANCE DATASET {% endcomment %}
-  <div class="mb-3 card mx-auto">
-    <div class="card-header">Upload Impedance Dataset</div>
-   <form method="POST" class="card-body" id="datasetForm">
-    {% csrf_token %}
-      <div class="">
-        <input type="file" class="form-control mb-2" accept=".csv" id="datasetInput"required>
-        <button type="submit" class="btn btn-primary">Visualize</button>
-      </div>
-  </form>
-  </div>
   {% comment %} ID and HEALTH {% endcomment %}
   <div class="row mb-3 gap-2 justify-content-center">
     {% comment %} ID AND IMAGE{% endcomment %}
@@ -43,8 +32,17 @@
         </div>
       </div>
     </div>
-    {% comment %} HEALTH ICON {% endcomment %}
-    <div class="col-12 col-sm-5 card health-icon">hello</div>
+    {% comment %} FOR UPLOADING IMPEDANCE DATASET {% endcomment %}
+    <div class="mb-3 card col-12 col-sm-5 align-self-center">
+      <div class="card-header">Upload Impedance Dataset</div>
+      <form method="POST" class="card-body" id="datasetForm">
+        {% csrf_token %}
+          <div class="">
+            <input type="file" class="form-control mb-2" accept=".csv" id="datasetInput"required>
+            <button type="submit" class="btn btn-primary">Visualize</button>
+          </div>
+      </form>
+    </div>
   </div>
   {% comment %} META AND ELECTRICAL INFORMATION {% endcomment %}
   <div class="row mb-3 gap-2 justify-content-center">

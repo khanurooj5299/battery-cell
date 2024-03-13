@@ -1,4 +1,4 @@
-.card {
+.card{
   max-width: 400px;
   padding: 0;
 }
@@ -21,4 +21,31 @@
 
 .field-value {
   text-align: end;
+}
+
+/* health icon */
+.cell {
+  margin: auto;
+  border: 5px solid black;
+  width: 100px;
+  height: 200px;
+  border-radius: 10px;
+}
+
+.cap {
+  width: 30px;
+  height: 15px;
+  background-color: black;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  margin: auto;
+}
+
+.healthy{
+  background-color: green;
+  border-bottom: 2px solid black
+}
+
+.degraded {
+  background-color: red;
 }
