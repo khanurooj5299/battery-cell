@@ -1,8 +1,8 @@
 from impedance import preprocessing
 from impedance.models.circuits import CustomCircuit
 import matplotlib.pyplot as plt
-import numpy as np
-import plotly.graph_objs as go
+import io
+import base64
 
 def getContext(datasetFile):
     context = {}
@@ -19,8 +19,17 @@ def getContext(datasetFile):
 
     # FIT THE IMPEDANCE DATA TO MODEL
     circuit.fit(frequencies, Z)
-
+    circuit.plot(f_data=frequencies, Z_data=Z, kind='bode')
     context['parameters'] = circuit.parameters_
+
+    # CREATE BODE PLOT
+    buffer = io.BytesIO()
+    plt.savefig(buffer, format='png', bbox_inches='tight')
+    buffer.seek(0)
+    plot_base64 = base64.b64encode(buffer.read()).decode('utf-8')
+    plt.close()
+    context['plot']="data:image/png;base64,"+plot_base64
+
     #assume max Rb to be 0.2 ohms
     R_b_max = 0.2
     context['health_percentage'] = (circuit.parameters_[0]/R_b_max)*100

@@ -1,4 +1,4 @@
-.card{
+.card:not(.card.plot){
   max-width: 400px;
   padding: 0;
 }
@@ -48,4 +48,8 @@
 
 .degraded {
   background-color: red;
+}
+
+.plot {
+  max-width: 685px;
 }
