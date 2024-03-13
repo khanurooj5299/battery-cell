@@ -1,13 +1,16 @@
 {% extends "base.html" %} 
 {% load static %} 
-{% block title %}Cell Details{% endblock title %} 
-{% block css %}
- {{ block.super }}
- <link rel="stylesheet" href="{% static "dashboard/css/cell_detail.css" %}">
-{% endblock css %}
-{% block content %}
+{% block title %}Cell Details{%endblock title %} 
+{% block css %} 
+  {{ block.super }} 
+  <link
+  rel="stylesheet" 
+  href="{% static "dashboard/css/cell_detail.css" %}"> 
+{% endblock css %} 
+{% block content %} 
 {% include "dashboard/header_component.html" with extraButtonMarkup='<a href="/dashboard" class="btn btn-primary me-2">Dashboard</a>'%}
 <div class="container p-3">
+  {% comment %} ID and HEALTH {% endcomment %}
   <div class="row gap-2 justify-content-center">
     {% comment %} ID AND IMAGE{% endcomment %}
     <div class="col-12 col-sm-5 card id-image">
@@ -17,19 +20,28 @@
         alt="cell image"
       />
       <div class="card-body d-flex justify-content-between align-items-center">
-      <div>
-        <h5 class="card-title">Cell-Id:</h5>
-        <div class="card-text">
-          {{cell.cell_id}}
-        </div>
+        <div>
+          <h5 class="card-title">Cell-Id:</h5>
+          <div class="card-text">{{cell.cell_id}}</div>
         </div>
         <div class="barcode">
-            <img src="data:image/png;base64,{{barcode}}" alt="barcode">
+          <img src="data:image/png;base64,{{barcode}}" alt="barcode" />
         </div>
       </div>
     </div>
     {% comment %} HEALTH ICON {% endcomment %}
     <div class="col-12 col-sm-5 card health-icon">hello</div>
+  </div>
+  {% comment %} CELL INFORMATION {% endcomment %}
+  <div class="row gap-2">
+    {% comment %} META INFORMATION {% endcomment %}
+    <div class="col-12 col-sm-5">
+      {% include "dashboard/meta_info_component.html" with cell=cell%}
+    </div>
+    {% comment %} ELECTRICAL PARAMETERS {% endcomment %}
+    <div class="col-12 col-sm-5">
+      {% include "dashboard/electrical_parameters_component.html" with cell=cell%}
+    </div>
   </div>
 </div>
 {% endblock content %}
