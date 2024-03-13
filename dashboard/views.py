@@ -2,6 +2,10 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView 
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from barcode import Code128
+from io import BytesIO
+import base64
+from barcode.writer import ImageWriter
 from .forms import CellCreateForm
 from .models import BatteryCell
 
@@ -22,6 +26,16 @@ class CellDetailView(DetailView):
     model = BatteryCell
     template_name = 'dashboard/cell_detail.html'
     context_object_name = 'cell'
+
+    # override this method to include barcode for the cell in context
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        bytes = BytesIO()
+        Code128(context['cell'].cell_id, writer=ImageWriter()).write(bytes)
+        binary_data = bytes.getvalue()
+        base64_encoded_string = base64.b64encode(binary_data).decode('utf-8')
+        context["barcode"] = base64_encoded_string
+        return context
 
 #view for creating a cell
 class CellCreateView(CreateView):
