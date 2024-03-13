@@ -10,9 +10,12 @@ from barcode.writer import ImageWriter
 from .forms import CellCreateForm
 from .models import BatteryCell
 from .visualization import getContext
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 #view for main dashboard of a user
-class DashboardView(ListView):
+class DashboardView(LoginRequiredMixin, ListView):
+    login_url = "/auth/login/"
     model = BatteryCell
     template_name = 'dashboard/dashboard.html'
     context_object_name = 'cell_list'
@@ -24,7 +27,8 @@ class DashboardView(ListView):
         return queryset
 
 #view for info of a particular cell
-class CellDetailView(DetailView):
+class CellDetailView(LoginRequiredMixin, DetailView):
+    login_url = "/auth/login/"
     model = BatteryCell
     template_name = 'dashboard/cell_detail.html'
     context_object_name = 'cell'
@@ -40,7 +44,8 @@ class CellDetailView(DetailView):
         return context
 
 #view for creating a cell
-class CellCreateView(CreateView):
+class CellCreateView(LoginRequiredMixin, CreateView):
+    login_url = "/auth/login/"
     form_class = CellCreateForm
     template_name = "dashboard/add_cell.html"
     success_url = "/dashboard"
@@ -53,8 +58,9 @@ class CellCreateView(CreateView):
         form.instance.created_by = self.request.user
         print(self.request.user)
         return super().form_valid(form)
-    
+
 # endpoint for getting the cell visualization template that will be embedded on the cell-detail page through JS 
+@login_required(login_url="/auth/login/")
 def cellVisualization(request):
     # expecting impedance data as csv file for creating the visualization template
     if(request.method != "POST"):
