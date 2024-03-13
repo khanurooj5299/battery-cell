@@ -1,4 +1,8 @@
 .card {
+  background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+  color: rgb(51, 52, 53);
+  .login {
     max-width: 400px;
     width: 100%;
+  }
 }
